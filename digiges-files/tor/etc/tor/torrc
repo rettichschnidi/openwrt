@@ -1,0 +1,14 @@
+# Config by DigiGes
+VirtualAddrNetwork 10.192.0.0/10
+AutomapHostsSuffixes .onion,.exit
+AutomapHostsOnResolve 1
+TransPort 127.0.0.1:9040
+TransPort [::1]:9040
+DNSPort 127.0.0.1:9053
+DNSPort [::1]:9053
+SocksPort 0
+
+# Defaults from LEDE
+Log notice syslog
+DataDirectory /var/lib/tor
+User tor
