@@ -111,6 +111,7 @@ digiges-configure-tor: digiges-clean
 	cat $(TOPDIR)/digiges-config/extension-tor >> $(TOPDIR)/.config
 	cat $(TOPDIR)/digiges-config/extension-iperf3 >> $(TOPDIR)/.config
 	cat $(TOPDIR)/digiges-config/extension-ca-certs >> $(TOPDIR)/.config
+	cat $(TOPDIR)/digiges-config/extension-curl >> $(TOPDIR)/.config
 	cp -r $(TOPDIR)/digiges-files/tor $(TOPDIR)/files
 digiges-tor: digiges-update-feeds digiges-configure-tor defconfig world
 .PHONY: digiges-update-feeds digiges-clean digiges-configure-tor
