@@ -8,6 +8,9 @@ DNSPort 127.0.0.1:9053
 DNSPort [::1]:9053
 SocksPort 0
 
+# Trade anonymity for speed
+EnforceDistinctSubnets 0
+
 # Defaults from LEDE
 Log notice syslog
 DataDirectory /var/lib/tor
