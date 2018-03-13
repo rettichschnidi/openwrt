@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frettichschnidi%2Fplan-b-openwrt-source.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frettichschnidi%2Fplan-b-openwrt-source?ref=badge_shield)
+
 This is the buildsystem for the OpenWrt Linux distribution.
 
 Please use "make menuconfig" to choose your preferred
@@ -27,3 +29,7 @@ Sunshine!
 	http://www.openwrt.org
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frettichschnidi%2Fplan-b-openwrt-source.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frettichschnidi%2Fplan-b-openwrt-source?ref=badge_large)
