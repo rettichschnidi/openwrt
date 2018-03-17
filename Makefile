@@ -101,39 +101,28 @@ world: prepare $(target/stamp-compile) $(package/stamp-compile) $(package/stamp-
 
 endif
 
-digiges-update-feeds:
+plan-b-update-feeds:
 	$(TOPDIR)/scripts/feeds update -a
 	$(TOPDIR)/scripts/feeds install -a
-digiges-clean:
-	rm -rf $(TOPDIR)/files
+plan-b-clean:
+	rm -f $(TOPDIR)/files
 	rm -f $(TOPDIR)/.config
-digiges-configure-tor: digiges-clean
-	cat $(TOPDIR)/digiges-config/extension-tor >> $(TOPDIR)/.config
-	cat $(TOPDIR)/digiges-config/extension-iperf3 >> $(TOPDIR)/.config
-	cat $(TOPDIR)/digiges-config/extension-ca-certs >> $(TOPDIR)/.config
-	cat $(TOPDIR)/digiges-config/extension-curl >> $(TOPDIR)/.config
-	cp -r $(TOPDIR)/digiges-files/tor $(TOPDIR)/files
-digiges-tor: digiges-update-feeds digiges-configure-tor defconfig world
-.PHONY: digiges-update-feeds digiges-clean digiges-configure-tor
+plan-b-configure: plan-b-clean
+	cat $(TOPDIR)/plan-b-config/extension-tor >> $(TOPDIR)/.config
+	cat $(TOPDIR)/plan-b-config/extension-iperf3 >> $(TOPDIR)/.config
+	cat $(TOPDIR)/plan-b-config/extension-ca-certs >> $(TOPDIR)/.config
+	cat $(TOPDIR)/plan-b-config/extension-curl >> $(TOPDIR)/.config
+	ln -s $(TOPDIR)/plan-b-files/files $(TOPDIR)/files
+plan-b: plan-b-update-feeds plan-b-configure defconfig world
+.PHONY: plan-b-update-feeds plan-b-clean plan-b-configure
 
-digiges-configure-gl-ar150-tor: digiges-configure-tor
-	cat $(TOPDIR)/digiges-config/base-gl-ar150 >> $(TOPDIR)/.config
-	cp $(TOPDIR)/digiges-files/gl-ar150-tor/etc/config/wireless $(TOPDIR)/files/etc/config
-digiges-gl-ar150-tor: digiges-update-feeds digiges-configure-gl-ar150-tor defconfig world
-.PHONY: digiges-configure-gl-ar150-tor digiges-gl-ar150-tor
+plan-b-configure-gl-ar150: plan-b-configure
+	cat $(TOPDIR)/plan-b-config/base-gl-ar150 >> $(TOPDIR)/.config
+plan-b-gl-ar150: plan-b-update-feeds plan-b-configure-gl-ar150 defconfig world
+.PHONY: plan-b-configure-gl-ar150 plan-b-gl-ar150
 
-digiges-configure-gl-ar150-speedtest: digiges-configure-gl-ar150-tor
-	cp -r $(TOPDIR)/digiges-files/iperf3-on-startup/etc/init.d $(TOPDIR)/files/etc
-digiges-gl-ar150-speedtest: digiges-update-feeds digiges-configure-gl-ar150-speedtest defconfig world
-.PHONY: digiges-configure-gl-ar150-speedtest digiges-gl-ar150-speedtest
+plan-b-configure-gl-ar300m: plan-b-configure
+	cat $(TOPDIR)/plan-b-config/base-gl-ar300m >> $(TOPDIR)/.config
+plan-b-gl-ar300m: plan-b-update-feeds plan-b-configure-gl-ar300m defconfig world
+.PHONY: plan-b-configure-gl-ar300m plan-b-gl-ar300m
 
-digiges-configure-gl-ar300m-tor: digiges-configure-tor
-	cat $(TOPDIR)/digiges-config/base-gl-ar300m >> $(TOPDIR)/.config
-	cp $(TOPDIR)/digiges-files/gl-ar300m-tor/etc/config/wireless $(TOPDIR)/files/etc/config
-digiges-gl-ar300m-tor: digiges-update-feeds digiges-configure-gl-ar300m-tor defconfig world
-.PHONY: digiges-configure-gl-ar300m-tor digiges-gl-ar300m-tor
-
-digiges-configure-gl-ar300m-speedtest: digiges-configure-gl-ar300m-tor
-	cp -r $(TOPDIR)/digiges-files/iperf3-on-startup/etc/init.d $(TOPDIR)/files/etc
-digiges-gl-ar300m-speedtest: digiges-update-feeds digiges-configure-gl-ar300m-speedtest defconfig world
-.PHONY: digiges-configure-gl-ar300m-speedtest digiges-gl-ar300m-speedtest

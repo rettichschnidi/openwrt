@@ -1,0 +1,3 @@
+[submodule "plan-b-files"]
+	path = plan-b-files
+	url = ../plan-b-openwrt-config.git
