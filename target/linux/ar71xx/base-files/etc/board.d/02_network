@@ -81,6 +81,7 @@ ar71xx_setup_interfaces()
 	el-mini|\
 	fritz300e|\
 	gl-usb150|\
+	gl-ar300m-lite|\
 	hiveap-121|\
 	lbe-m5|\
 	loco-m-xw|\

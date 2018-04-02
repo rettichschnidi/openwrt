@@ -97,6 +97,7 @@ get_status_led() {
 	cpe830|\
 	cpe870|\
 	gl-ar300m|\
+	gl-ar300m-lite|\
 	gl-inet|\
 	gl-mifi)
 		status_led="$board:green:lan"
@@ -555,6 +556,7 @@ set_state() {
 		status_led_on
 		case $(board_name) in
 		gl-ar300m|\
+		gl-ar300m-lite|\
 		gl-ar750)
 			fw_printenv lc >/dev/null 2>&1 && fw_setenv "bootcount" 0
 			;;

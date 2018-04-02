@@ -438,6 +438,15 @@ define Device/gl-ar300m
 endef
 TARGET_DEVICES += gl-ar300m
 
+define Device/gl-ar300m-lite
+  DEVICE_TITLE := GL.iNet GL-AR300M-Lite
+  DEVICE_PACKAGES := kmod-usb-core kmod-usb2
+  BOARDNAME := GL-AR300M-Lite
+  IMAGE_SIZE := 16000k
+  MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),16000k(firmware),64k(art)ro
+endef
+TARGET_DEVICES += gl-ar300m-lite
+
 define Device/gl-ar750
   DEVICE_TITLE := GL.iNet GL-AR750
   DEVICE_PACKAGES := kmod-ath10k ath10k-firmware-qca9887 kmod-usb-core \
